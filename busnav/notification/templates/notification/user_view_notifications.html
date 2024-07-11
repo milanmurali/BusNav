@@ -1,0 +1,43 @@
+{% extends 'temp/User Home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User View Notifications</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <br>
+		<h1>User View Notifications</h1>
+    <table border="1">
+    <tr style="color:#DC143C">
+{#    	<td>notification id</td>#}
+    	<td>user id</td>
+		<td>Description</td>
+		<td>type</td>
+    </tr>
+        {% for i in x %}
+    <tr style="color:#0E2E50">
+{#		<td>{{ i.notification_id }}</td>#}
+		<td>{{ i.user_id }}</td>
+		<td>{{ i.message}}</td>
+		<td>{{ i.notification_type }}</td>
+    </tr>
+        {% endfor %}
+    </table>
+    <br>
+    </center>
+</body>
+</html>
+{% endblock %}

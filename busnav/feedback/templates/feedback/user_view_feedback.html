@@ -1,0 +1,51 @@
+{% extends 'temp/User Home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User View Feedback</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <br>
+		<h1>User View Feedback</h1>
+    <table border="1">
+    <tr style="color:#DC143C">
+{#    	<td>Feedback id</td>#}
+    	<td>User id</td>
+    	<td>Route Name</td>
+		<td>Bus Name</td>
+        <td>stop Name</td>
+		<td>rating</td>
+		<td>comment</td>
+		<td>feedback date</td>
+    </tr>
+        {% for i in x %}
+    <tr style="color:#0E2E50">
+{#		<td>{{ i.feedback_id }}</td>#}
+		<td>{{ i.user_id }}</td>
+		<td>{{ i.route.route_name}}</td>
+		<td>{{ i.bus.busname}}</td>
+        <td>{{ i.stop.stop_name }}</td>
+		<td>{{ i.rating}}</td>
+		<td>{{ i.comment }}</td>
+		<td>{{ i.feedback_date }}</td>
+    </tr>
+        {% endfor %}
+    </table>
+    <br>
+    </center>
+</body>
+</html>
+{% endblock %}

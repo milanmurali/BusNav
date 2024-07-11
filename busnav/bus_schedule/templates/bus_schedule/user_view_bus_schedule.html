@@ -1,0 +1,58 @@
+{% extends 'temp/User Home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User View Bus Schedule</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <br>
+		<h1>User View Bus Schedule</h1>
+{#    <table style="border: none;">#}
+    <tr>
+        <form method="post">
+            {% csrf_token %}
+            <td><input type="text" name="lop" class="form-control-sm h-auto w-auto" width="100"></td>
+            <td><input type="submit" value="Search" class="btn btn-primary"></td>
+        </form>
+    </tr>
+{#    </table>#}
+    <br>
+    <table border="1">
+    <tr style="color:#DC143C">
+{#    	<td>Schedule No.</td>.#}
+    	<td>Bus Name</td>
+		<td>Route Name</td>
+		<td>Stop Name</td>
+		<td>Trip</td>
+		<td>Arrival Time</td>
+    </tr>
+         {% for i in x %}
+    <tr style="color:#0E2E50">
+{#		<td>{{ i.schedule_id }}</td>#}
+		<td>{{ i.bus.busname }}</td>
+		<td>{{ i.route.route_name}}</td>
+		<td>{{ i.stop.stop_name}}</td>
+		<td>{{ i.trip }}</td>
+		<td>{{ i.stop_arrival_time }}</td>
+    </tr>
+                {% endfor %}
+
+    </table>
+    <br>
+    </center>
+</body>
+</html>
+{% endblock %}

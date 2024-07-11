@@ -1,0 +1,53 @@
+{% extends 'temp/User Home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User View Bus Registrations</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <br>
+	<h1>User View Bus Registrations</h1>
+{#    <tr>#}
+{#        <form method="post">#}
+{#            {% csrf_token %}#}
+{#            <td><input type="text" name="lop" class="form-control-sm h-auto w-auto" width="100"></td>#}
+{#            <td><input type="submit" value="Search" class="btn btn-primary"></td>#}
+{#        </form>#}
+{#    </tr>#}
+    <table border="1">
+    <tr style="color:#DC143C">
+        <td>Bus S/N</td>
+		<td>Vehicle Name</td>
+		<td>Vehicle Number</td>
+		<td>Starting Point</td>
+		<td>Ending Point</td>
+    
+    </tr>
+         {% for i in x %}
+    <tr style="color:#0E2E50">
+        <td>{{ i.bus_id }}</td>
+		<td>{{ i.busname }}</td>
+		<td>{{ i.vehicle_no }}</td>
+		<td>{{ i.starting_point }}</td>
+		<td>{{ i.destination_point }}</td>
+    </tr>
+                {% endfor %}
+    </table>
+    <br>
+    </center>
+</body>
+</html>
+{% endblock %}

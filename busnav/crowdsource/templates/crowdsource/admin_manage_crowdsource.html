@@ -1,0 +1,50 @@
+{% extends 'temp/Admin home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Manage CrowdSource</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <br>
+		<h1>Admin Manage CrowdSource</h1>
+
+    <table border="1">
+    <tr style="color:#DC143C">
+    	<td>CrowdSource id</td>
+    	<td>User id</td>
+		<td>Description</td>
+		<td>Type</td>
+		<td>Status</td>
+    </tr>
+         {% for i in x %}
+    <tr style="color:#0E2E50">
+		<td>{{ i.crowdsource_id }}</td>
+		<td>{{ i.user_id }}</td>
+		<td>{{ i.description }}</td>
+		<td>{{ i.type }}</td>
+        <td>{{ i.status }}</td>
+		<td><a href="/crowdsource/accept/{{ i.crowdsource_id}}">Accept</a></td>
+		<td><a href="/crowdsource/deny/{{ i.crowdsource_id }}">Deny</a></td>
+    </tr>
+                        {% endfor %}
+
+    </table>
+    <br>
+    </center>
+</body>
+</html>
+{% endblock %}
+

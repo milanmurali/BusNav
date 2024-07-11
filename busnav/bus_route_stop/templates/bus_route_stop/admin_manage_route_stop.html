@@ -1,0 +1,46 @@
+{% extends 'temp/Admin home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Route-Stop Sequence</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <br>
+		<h1>Admin Route-Stop Sequence</h1>
+    <table border="1">
+    <tr style="color:#DC143C">
+		<td>Route Stop id</td>
+		<td>Route Name</td>
+		<td>Stop Name</td>
+		<td>Sequence</td>
+	</tr>
+
+        {% for i in x %}
+    <tr style="color:#0E2E50">
+		<td>{{ i.route_stop_id }}</td>
+		<td>{{ i.route.route_name }}</td>
+		<td>{{ i.stop.stop_name }}</td>
+		<td>{{ i.stop_sequence_order }}</td>
+    </tr>
+                                {% endfor %}
+
+    </table>
+    <br>
+    </center>
+</body>
+</html>
+{% endblock %}
+

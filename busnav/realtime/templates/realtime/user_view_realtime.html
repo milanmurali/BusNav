@@ -1,0 +1,39 @@
+{% extends 'temp/User Home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, td {
+            border: none;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<center>
+<h1>
+    Real Time Bus Tracking
+</h1>
+<table border="1" class="table table-striped w-50 h-50">
+    <tr>
+        <td>Bus Number</td>
+        <td>&nbsp</td>
+    </tr>
+    {% for i in x %}
+    <tr>
+        <td>{{ i.bus_no }}</td>
+        <td><a href="/track/a/{{ i.realtime_id }}" class="btn btn-primary">Map</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</center>
+</body>
+</html>
+{% endblock %}

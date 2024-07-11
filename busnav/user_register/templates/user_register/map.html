@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+{#    <p>My Google Maps Demo</p>#}
+    <input type="hidden" name="lat" id="lat" value="{{ lat }}">
+    <input type="hidden" name="lon" id="lon" value="{{ lon }}">
+
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var lt=parseFloat(document.getElementById('lat').value);
+        var ln=parseFloat(document.getElementById('lon').value);
+        var test= {lat: lt, lng: ln};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: test,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var marker = new google.maps.Marker({
+          position: test,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChT4ujGXrMnr-Ley5rIkWKKLxW7UIfSU4&callback=initMap">
+    </script>
+  </body>
+</html>
+
+{% extends 'temp/home_shop.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>track user</title>
+</head>
+<body>
+    <center>
+       <h2><b>track user</b></h2>
+        <table border="1">
+            <tr>
+                <th>user</th>
+{#                <th>booking id</th>#}
+                <th>location</th>
+            </tr>
+            {% for i in x %}
+            <tr>
+                <td>{{ i.user.name }}</td>
+                <td>
+                    <a href="/track/map/{{ i.location_id }}">Map</a>
+                </td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+
+</body>
+</html>
+{% endblock %}

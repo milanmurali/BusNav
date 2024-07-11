@@ -1,0 +1,46 @@
+{% extends 'temp/User Home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User Manage Favourites</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <br>
+		<h1>User Manage Favourites</h1>
+    <table border="1">
+    <tr style="color:#DC143C">
+{#		<td>Favourite id</td>#}
+		<td>bus Name</td>
+		<td>Stop Name</td>
+		<td>Route Name</td>
+	</tr>
+         {% for i in x %}
+    <tr style="color:#0E2E50">
+{#		<td>{{ i.favourite_id }}</td>#}
+		<td>{{ i.bus.busname}}</td>
+		<td>{{ i.stop.stop_name}}</td>
+		<td>{{ i.route.route_name}}</td>
+		<td><a href="/favourite/ update/{{ i.favourite_id }}">Update</a></td>
+		<td><a href="/favourite/delete/{{ i.favourite_id }}">Delete</a></td>
+    </tr>
+                {% endfor %}
+
+    </table>
+    <br>
+    </center>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'temp/Admin home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Manage Bus Schedule</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <br>
+		<h1>Admin Manage Bus Schedule</h1>
+    <table border="1">
+    <tr style="color:#DC143C">
+    	<td>Schedule id</td>
+    	<td>Bus Name</td>
+		<td>Route Name</td>
+		<td>Stop Name</td>
+		<td>Trip</td>
+		<td>Arrival Time</td>
+        <td>Status</td>
+    </tr>
+         {% for i in x %}
+    <tr style="color:#0E2E50">
+		<td>{{ i.schedule_id }}</td>
+		<td>{{ i.bus.busname }}</td>
+		<td>{{ i.route.route_name }}</td>
+		<td>{{ i.stop.stop_name }}</td>
+		<td>{{ i.trip }}</td>
+		<td>{{ i.stop_arrival_time }}</td>
+        <td>{{ i.status }}</td>
+		<td><a href="/bus_schedule/accept/{{ i.schedule_id }}">Accept</a></td>
+		<td><a href="/bus_schedule/deny/{{ i.schedule_id }}">Deny</a></td>
+    </tr>
+                        {% endfor %}
+
+    </table>
+    <br>
+    </center>
+</body>
+</html>
+{% endblock %}

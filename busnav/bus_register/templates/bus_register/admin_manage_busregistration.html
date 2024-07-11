@@ -1,0 +1,53 @@
+{% extends 'temp/Admin home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+    <title>Admin Manage Bus Registration</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+    <br>
+	<h1>Admin Manage Bus Registration</h1>
+    <table border="1">
+    <tr style="color:#DC143C">
+        <td>Bus id</td>
+		<td>Vehicle Name</td>
+		<td>Vehicle Number</td>
+		<td>Starting Point</td>
+		<td>Ending Point</td>
+        <td>Status</td>
+    
+    </tr >
+        {% for i in x %}
+    <tr style="color:#0E2E50">
+        <td>{{ i.bus_id }}</td>
+		<td>{{ i.busname }}</td>
+		<td>{{ i.vehicle_no }}</td>
+		<td>{{ i.starting_point }}</td>
+		<td>{{ i.destination_point }}</td>
+        <td>{{ i.status }}</td>
+		<td><a href="/bus_register/accept/{{ i.bus_id }}">Accept</a></td>
+		<td><a href="/bus_register/deny/{{ i.bus_id }}">Deny</a></td>
+    </tr>
+                        {% endfor %}
+
+    </table>
+    <br>
+    </center>
+</body>
+</html>
+{% endblock %}

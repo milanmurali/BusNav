@@ -1,0 +1,125 @@
+{% extends 'temp/Login.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+		<title>Login</title>
+</head>
+
+<body>
+    <center>
+    <br>
+        <form method="post">
+            {% csrf_token %}
+			<h1><u>Login</u></h1><br><br>
+
+			<table border="0">
+        	<tr>
+				<td>
+					<label for="username">Username:&nbsp&nbsp</label>
+				</td>
+				<td>
+        			<input type="text" id="username" class="form-control" name="username" required onkeyup="getLocation()">
+        		</td>
+        	</tr>
+        	<tr>
+        		<td>
+        			<label for="password" >Password:&nbsp&nbsp</label>
+        		</td>
+        		<td>
+        			<input type="password" id="password" class="form-control" name="password" required>
+        		</td>
+        	</tr>
+        	<tr>
+                <td>
+
+                </td>
+        		<td>
+					<br><input type="submit" value="Login" class="btn btn-danger" onclick="getLocation()">&nbsp&nbsp
+                    <button type="reset" class="btn btn-dark">Clear</button>
+        		</td>
+        	</tr>
+        	</table>
+            <body>
+              <div class="a">
+
+             <table>
+{#           <tr>#}
+{#               <td></td>#}
+{#               <td><input type="text" name="lat" id="ou" required="" ></td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#               <td></td>#}
+{#               <td><input type="text" name="long" id="ii" required=""></td>#}
+{#            </tr>#}
+
+    </table>
+      </div>
+            </body>
+        </form>
+   </center>
+        </body>
+		</form>
+{#        <button type="button"  class="btn btn-dark">Location</button>#}
+{#        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChT4ujGXrMnr-Ley5rIkWKKLxW7UIfSU4&libraries=places"></script>#}
+<script>
+
+function getLocation() {
+    if("geolocation" in navigator)
+    {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var lat=position.coords.latitude;
+            {#alert(lat);#}
+        },
+        function (error) {
+            if(error.code===error.PERMISSION_DENIED)
+            {
+                {#alert('user denied')#}
+            }
+        }
+        );
+    }
+    else
+    {
+        {#alert('not ok')#}
+    }
+    /*
+    alert('hello');
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position);
+        const latitude = position.coords.latitude;
+        alert('haiii')
+
+
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+    */
+}
+
+
+function sendLocation(position) {
+    {#alert('haiii');#}
+
+    {#const latitude = position.coords.latitude;#}
+    {#const longitude = position.coords.longitude;#}
+    {#document.getElementById('ou').value = latitude.toString();#}
+    {#document.getElementById('ii').value = longitude.toString();#}
+
+}
+</script>
+
+
+        {% if msg %}
+            <script>
+            alert('Username or password Incorrect')
+            </script>
+        {% endif %}
+    <br>
+    </center>
+<br><br>
+</body>
+
+</html>
+{% endblock %}

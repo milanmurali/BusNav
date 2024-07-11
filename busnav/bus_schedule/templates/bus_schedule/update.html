@@ -1,0 +1,94 @@
+{% extends 'temp/Bus_Home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Update Bus Schedule</title>
+        <script>
+            function msg() {
+                alert("Added successfully");
+            }
+        </script>
+	</head>
+
+	<body>
+        <center>
+        <br>
+		<h1><u>Update Bus Schedule</u></h1>
+
+		<form id="busschedule" method="post">
+                        {% csrf_token %}
+
+ 			<table>
+{#    			<tr>#}
+{#      				<td>#}
+{#        				<label for="busname">Select Bus:</label>#}
+{#      				</td>#}
+{#      				<td>#}
+{##}
+{#				        <select name="bus" class="form-select">#}
+{#                            {% for i in z %}#}
+{#                                <option value="{{ i.bus_id }}">{{ i.busname }}</option>#}
+{#                            {% endfor %}#}
+{#                        </select>#}
+{#      				</td>#}
+{#    			</tr>#}
+    			<tr>
+      				<td>
+				        <label for="busroutename">Select Route:</label>
+      				</td>
+					<td>
+        				<select name="route" class="form-select">
+                            {% for i in x %}
+                                <option value="{{ i.route_id }}">{{ i.route_name }}</option>
+                            {% endfor %}
+                        </select>
+      				</td>
+			    </tr>
+    			<tr>
+      				<td>
+        				<label for="trip">Select Trip:</label>
+      				</td>
+      				<td>
+        				<input type="text" name="trip" class="form-control" value="{{ a.trip }}" required>
+     				</td>
+    			</tr>
+			    <tr>
+      				<td>
+	        			<label for="busstopname">Select Stop:</label>
+    	  			</td>
+                <td><input value="{{ a.stop.stop_name }}"></td>
+      				<td>
+				        <select name="stop" class="form-select">
+                            {% for i in y %}
+                                <option value="{{ i.stop_id }}">{{ i.stop_name }}</option>
+                            {% endfor %}
+                        </select>
+      				</td>
+    			</tr>
+    			<tr>
+      				<td>
+        				<label for="time">Arrival Time:</label>
+      				</td>
+      				<td>
+                        <input value="{{ a.stop_arrival_time }}">
+        				<input type="time" id="time" class="form-control" value="{{ a.stop_arrival_time }}" name="dt" />
+      				</td>
+    			</tr>
+    			<tr>
+      				<td>
+
+      				</td>
+      				<td>
+                        <br>
+        				<input type="submit" class="btn btn-primary" onclick="msg()" value="Update">&nbsp
+        				<button type="reset" class="btn btn-dark">Clear</button>
+				    </td>
+    			</tr>
+  			</table>
+		</form>
+        <br>
+        </center>
+	</body>
+</html>
+{% endblock %}

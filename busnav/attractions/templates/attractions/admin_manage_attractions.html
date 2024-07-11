@@ -1,0 +1,49 @@
+{% extends 'temp/Admin home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Manage Attractions</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <br>
+		<h1>Admin Manage Attractions</h1>
+    <table border="1">
+    <tr style="color:#DC143C">
+    	<td>Attraction id</td>.
+    	<td>Name</td>
+		<td>Latitude</td>
+		<td>Longitude</td>
+		<td>Description</td>
+        <td>Status</td>
+    </tr>
+    {% for i in x %}
+    <tr style="color:#0E2E50">
+		<td>{{ i.attractions_id }}</td>
+		<td>{{ i.name }}</td>
+		<td>{{ i.latitude }}</td>
+		<td>{{ i.longitude }}</td>
+		<td>{{ i.description }}</td>
+        <td>{{ i.status }}</td>
+		<td><a href="/attractions/accept/{{ i.attractions_id }}">Accept</a></td>
+		<td><a href="/attractions/deny/{{ i.attractions_id }}">Deny</a></td>
+    </tr>
+        {% endfor %}
+    </table>
+    <br>
+    </center>
+</body>
+</html>
+{% endblock %}

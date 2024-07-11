@@ -1,0 +1,52 @@
+{% extends 'temp/User Home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <br>
+		<h1>Profile</h1>
+    <table border="1">
+    <tr style="color:#DC143C">
+    	<td>First Name</td>
+    	<td>Last Name</td>
+    	<td>DOB</td>
+		<td>Gender</td>
+		<td>Username</td>
+{#		<td>Password</td>#}
+		<td>Email</td>
+        <td>&nbsp</td>
+    </tr >
+        {% for i in x %}
+    <tr style="color:#0E2E50">
+		<td>{{ i.first_name }}</td>
+		<td>{{ i.last_name }}</td>
+		<td>{{ i.dob}}</td>
+		<td>{{ i.gender}}</td>
+		<td>{{ i.username}}</td>
+{#		<td>{{ i.password }}</td>#}
+		<td>{{ i.email }}</td>
+    <td><a href="/user_register/update/{{ i.user_id }}">Update</a> </td>
+    </tr>
+                {% endfor %}
+
+    </table>
+    <br><br><br><br><br><br><br><br><br>
+    </center>
+</body>
+</html>
+{% endblock %}

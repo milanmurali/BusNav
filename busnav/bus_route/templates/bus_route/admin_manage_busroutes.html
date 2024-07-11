@@ -1,0 +1,50 @@
+{% extends 'temp/Admin home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Manage Routes</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <br>
+		<h1>Admin Manage Routes</h1>
+    <table border="1">
+    <tr style="color:#DC143C">
+		<td>Route id</td>
+		<td>Route Name</td>
+		<td>Description</td>
+		<td>Starting Stop:</td>
+		<td>Ending Stop:</td>
+
+
+    
+    </tr>
+        {% for i in x %}
+    <tr style="color:#0E2E50">
+		<td>{{ i.route_id }}</td>
+		<td>{{ i.route_name }}</td>
+		<td>{{ i.description }}</td>
+		<td>{{ i.stop.stop_name }}</td>
+		<td>{{ i.end_stop_id }}</td>
+		<td><a href="/bus_route/ update/{{ i.route_id }}">Update</a></td>
+		<td><a href="/bus_route/delete/{{ i.route_id }}">Delete</a></td>
+    </tr>
+                                {% endfor %}
+    </table>
+    <br>
+    </center>
+</body>
+</html>
+{% endblock %}

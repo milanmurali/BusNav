@@ -1,0 +1,84 @@
+{% extends 'temp/Admin home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Add Bus Routes</title>
+        <script>
+            function msg() {
+                alert("Added successfully");
+            }
+        </script>
+	</head>
+	
+	<body>
+        <center>
+        <br>
+		<h1><u>Add Bus Routes</u></h1>
+
+			<form id="addbusroute" method="post">
+                            {% csrf_token %}
+
+  <table>
+    <tr>
+      <td>
+        <label for="busroutename">Bus Route Name:</label>
+      </td>
+      <td>
+        <input type="text" id="busroutename" name="busroutename" autocomplete="off" class="form-control" required>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label for="routedesc">Description:</label>
+      </td>
+      <td>
+        <textarea id="routedesc" name="routedesc" rows="4" cols="50" maxlength="500" autocomplete="off" class="form-control" placeholder="(up to 500 characters)"></textarea>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label for="startstopid">Starting Stop:</label>
+      </td>
+      <td>
+        <select name="startstop" class="form-select">
+              {% for i in x %}
+                  <option value="{{ i.stop_id }}">{{ i.stop_name }}</option>
+              {% endfor %}
+          </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label for="endstopid">Ending Stop:</label>
+      </td>
+      <td>
+        <select name="endstop" class="form-select">
+              {% for i in x %}
+                  <option value="{{ i.stop_name }}">{{ i.stop_name }}</option>
+              {% endfor %}
+          </select>      </td>
+    </tr>
+    <tr>
+                <td>
+
+                </td>
+
+                <td>
+                    <br>
+                    <input type="submit" value="Register" onclick="msg()" class="btn btn-primary">&nbsp;&nbsp;
+                    <button type="reset" class="btn btn-dark">Clear</button >
+                </td>
+            </tr>
+
+  </table>
+</form>
+    <br>
+    </center>
+</body>
+</html>
+{% endblock %}
+    

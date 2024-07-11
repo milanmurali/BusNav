@@ -1,0 +1,49 @@
+{% extends 'temp/User Home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User View Bus Stops</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <br>
+		<h1>User View Bus Stops</h1>
+    <table border="1">
+    <tr style="color:#DC143C">
+{#		<td>Stop id</td>#}
+		<td>Stop Name</td>
+		<td>Description</td>
+{#        <td>Latitude</td>#}
+{#        <td>Longitude</td>#}
+
+    </tr>
+         {% for i in x %}
+    <tr style="color:#0E2E50">
+{#		<td>{{ i.stop_id }}</td>#}
+		<td>{{ i.stop_name }}</td>
+		<td>{{ i.stop_desc }}</td>
+{#    	<td>{{ i.latitude }}</td>#}
+{#		<td>{{ i.longitude }}</td>#}
+
+
+    </tr>
+                {% endfor %}
+
+    </table>
+    <br>
+    </center>
+</body>
+</html>
+{% endblock %}
